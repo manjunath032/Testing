@@ -1,0 +1,7 @@
+chore(build): keep generated JAXB sources in target; stop copying into src/generated
+
+- Remove maven-resources copy that copied generated sources into src/generated/java
+- Add /src/generated and /target to .gitignore
+- Rely on build-helper to add target/generated-sources/jaxb as compile source
+- Untrack generated build artifacts and build output
+
