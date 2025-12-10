@@ -1,0 +1,23 @@
+# IntelliJ IDEA: ignore workspace-specific and user files
+# Keep project-level settings (codeStyles, inspectionProfiles, runConfigurations) checked in
+
+# Workspace and local user files
+workspace.xml
+tasks.xml
+usage.statistics.xml
+
+# Local folders
+shelf/
+.dictionaries/
+
+# HTTP requests, deployment and other local settings
+httpRequests/
+deployment.xml
+jsLibraryMappings.xml
+
+# Other local files
+.idea_modules/
+
+# ignore module iml files (if you prefer tracking them, remove this)
+*.iml
+

@@ -1,7 +1,0 @@
-org\example\sample\ObjectFactory.class
-org\example\endpoint\SampleWebServiceEndpoint.class
-org\example\sample\SampleResponse.class
-org\example\SpringWsdlApplication.class
-org\example\sample\package-info.class
-org\example\sample\SampleRequest.class
-org\example\config\WebServiceConfig.class

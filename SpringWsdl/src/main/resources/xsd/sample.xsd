@@ -4,6 +4,9 @@
            xmlns:tns="http://www.example.org/sample"
            elementFormDefault="qualified">
 
+    <!-- Include separate security schema that holds Login/VerifyAccess elements -->
+    <xs:include schemaLocation="security.xsd"/>
+
     <!-- Sample Request Element -->
     <xs:element name="SampleRequest">
         <xs:complexType>
@@ -22,5 +25,5 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-</xs:schema>
 
+</xs:schema>

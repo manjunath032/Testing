@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.example.org/sample"
+           xmlns:tns="http://www.example.org/sample"
+           elementFormDefault="qualified">
+
+    <!-- Login Request/Response moved to a separate schema -->
+    <xs:element name="LoginRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string"/>
+                <xs:element name="password" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="LoginResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="token" type="xs:string" minOccurs="0"/>
+                <xs:element name="status" type="xs:string"/>
+                <xs:element name="message" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Access Verification Request/Response moved to separate schema -->
+    <xs:element name="VerifyAccessRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="token" type="xs:string"/>
+                <xs:element name="resource" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="VerifyAccessResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="allowed" type="xs:boolean"/>
+                <xs:element name="reason" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
+

@@ -38,5 +38,36 @@ public class SoapEndpointIntegrationTest {
         client.sendRequest(withPayload(new StringSource(request)))
                 .andExpect(payload(new StringSource(expectedResponse)));
     }
-}
 
+    @Test
+    public void testLoginSuccess() {
+        String request = "<sam:LoginRequest xmlns:sam=\"http://www.example.org/sample\">" +
+                "<sam:username>user</sam:username>" +
+                "<sam:password>pass</sam:password>" +
+                "</sam:LoginRequest>";
+
+        String expectedResponse = "<sam:LoginResponse xmlns:sam=\"http://www.example.org/sample\">" +
+                "<sam:token>dummy-token</sam:token>" +
+                "<sam:status>SUCCESS</sam:status>" +
+                "<sam:message>Logged in</sam:message>" +
+                "</sam:LoginResponse>";
+
+        client.sendRequest(withPayload(new StringSource(request)))
+                .andExpect(payload(new StringSource(expectedResponse)));
+    }
+
+    @Test
+    public void testVerifyAccessAllowed() {
+        String request = "<sam:VerifyAccessRequest xmlns:sam=\"http://www.example.org/sample\">" +
+                "<sam:token>dummy-token</sam:token>" +
+                "<sam:resource>allowedResource</sam:resource>" +
+                "</sam:VerifyAccessRequest>";
+
+        String expectedResponse = "<sam:VerifyAccessResponse xmlns:sam=\"http://www.example.org/sample\">" +
+                "<sam:allowed>true</sam:allowed>" +
+                "</sam:VerifyAccessResponse>";
+
+        client.sendRequest(withPayload(new StringSource(request)))
+                .andExpect(payload(new StringSource(expectedResponse)));
+    }
+}

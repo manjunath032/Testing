@@ -131,29 +131,7 @@
                 </executions>
             </plugin>
 
-            <!-- Copy generated sources into src/generated/java so IDEs that don't auto-add target/generated-sources will still see them -->
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.3.1</version>
-                <executions>
-                    <execution>
-                        <id>copy-generated-sources-to-src</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.basedir}/src/generated/java</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${project.build.directory}/generated-sources/jaxb</directory>
-                                    <filtering>false</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <!-- NOTE: Removed the maven-resources-plugin execution that copied generated sources into src/generated/java. Keeping generated sources under target/generated-sources is the preferred approach. -->
         </plugins>
     </build>
 </project>

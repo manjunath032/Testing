@@ -12,6 +12,7 @@
         </xs:schema>
     </types>
 
+    <!-- Existing sample messages -->
     <message name="SampleRequest">
         <part name="parameters" element="tns:SampleRequest"/>
     </message>
@@ -20,16 +21,64 @@
         <part name="parameters" element="tns:SampleResponse"/>
     </message>
 
+    <!-- Login messages -->
+    <message name="LoginRequest">
+        <part name="parameters" element="tns:LoginRequest"/>
+    </message>
+
+    <message name="LoginResponse">
+        <part name="parameters" element="tns:LoginResponse"/>
+    </message>
+
+    <!-- Access verification messages -->
+    <message name="VerifyAccessRequest">
+        <part name="parameters" element="tns:VerifyAccessRequest"/>
+    </message>
+
+    <message name="VerifyAccessResponse">
+        <part name="parameters" element="tns:VerifyAccessResponse"/>
+    </message>
+
     <portType name="SamplePort">
         <operation name="SampleOperation">
             <input message="tns:SampleRequest"/>
             <output message="tns:SampleResponse"/>
+        </operation>
+        <!-- Login operation -->
+        <operation name="Login">
+            <input message="tns:LoginRequest"/>
+            <output message="tns:LoginResponse"/>
+        </operation>
+        <!-- Access verification operation -->
+        <operation name="VerifyAccess">
+            <input message="tns:VerifyAccessRequest"/>
+            <output message="tns:VerifyAccessResponse"/>
         </operation>
     </portType>
 
     <binding name="SampleBinding" type="tns:SamplePort">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="SampleOperation">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <!-- Binding for Login -->
+        <operation name="Login">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <!-- Binding for VerifyAccess -->
+        <operation name="VerifyAccess">
             <soap:operation soapAction=""/>
             <input>
                 <soap:body use="literal"/>
@@ -47,4 +96,3 @@
     </service>
 
 </definitions>
-
