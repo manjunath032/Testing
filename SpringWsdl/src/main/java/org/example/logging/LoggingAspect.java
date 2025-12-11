@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 
-@Aspect
-@Component
+// @Aspect
+// @Component
 public class LoggingAspect {
 
     private static final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
@@ -21,35 +21,25 @@ public class LoggingAspect {
         String functionName = pjp.getSignature().toShortString();
         MDC.put(MDC_FUNCTION, functionName);
 
-        if (logger.isInfoEnabled()) {
-            logger.info("ENTER {}", functionName);
-        }
-        if (logger.isDebugEnabled()) {
-            try {
-                Object[] args = pjp.getArgs();
-                logger.debug("ARGS {} -> {}", functionName, args == null ? "[]" : java.util.Arrays.toString(args));
-            } catch (Exception e) {
-                logger.debug("Failed to log args for {}", functionName, e);
-            }
+        if (logger.isTraceEnabled()) {
+            logger.trace("ENTER {}", functionName);
         }
 
         long start = System.currentTimeMillis();
         try {
             Object result = pjp.proceed();
             long duration = System.currentTimeMillis() - start;
-            if (logger.isInfoEnabled()) {
-                logger.info("EXIT {} ({} ms)", functionName, duration);
-            }
-            if (logger.isDebugEnabled()) {
-                logger.debug("RESULT {} -> {}", functionName, result);
+            if (logger.isTraceEnabled()) {
+                logger.trace("EXIT {} ({} ms)", functionName, duration);
             }
             return result;
         } catch (Throwable t) {
-            logger.error("EXCEPTION in {}: {}", functionName, t.toString(), t);
+            if (logger.isTraceEnabled()) {
+                logger.trace("EXCEPTION in {}: {}", functionName, t.toString());
+            }
             throw t;
         } finally {
             MDC.remove(MDC_FUNCTION);
         }
     }
 }
-
