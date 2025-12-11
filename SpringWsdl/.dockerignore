@@ -1,0 +1,9 @@
+logs/
+*.iml
+.idea/
+*.md
+*.log
+.DS_Store
+.git/
+.gitignore
+mvnw*

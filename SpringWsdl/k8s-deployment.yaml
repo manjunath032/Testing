@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springwsdl-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springwsdl
+  template:
+    metadata:
+      labels:
+        app: springwsdl
+    spec:
+      containers:
+      - name: springwsdl
+        image: springwsdl:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: JAVA_OPTS
+          value: "-Xms256m -Xmx512m"
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springwsdl-service
+spec:
+  selector:
+    app: springwsdl
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      nodePort: 30080
