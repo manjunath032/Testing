@@ -1,0 +1,22 @@
+# Maven
+/target/
+
+# IDEs
+/.idea/
+*.iml
+*.ipr
+*.iws
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Docker
+docker-compose.override.yml
+
+# Other
+.settings/
+

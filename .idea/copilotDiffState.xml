@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/RedisTest/src/main/java/org/example/service/UserService.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/RedisTest/src/main/java/org/example/service/UserService.java" />
+              <option name="originalContent" value="package org.example.service;&#10;&#10;import org.example.model.UserDto;&#10;import org.springframework.cache.annotation.CacheEvict;&#10;import org.springframework.cache.annotation.Cacheable;&#10;import org.springframework.stereotype.Service;&#10;&#10;@Service&#10;public class UserService {&#10;&#10;    @Cacheable(cacheNames = &quot;users&quot;, key = &quot;#id&quot;)&#10;    public UserDto getUserById(String id) {&#10;        // Simulate slow call / DB fetch&#10;        try {&#10;            Thread.sleep(500);&#10;        } catch (InterruptedException e) {&#10;            Thread.currentThread().interrupt();&#10;        }&#10;        return new UserDto(id, &quot;User-&quot; + id);&#10;    }&#10;&#10;    @CacheEvict(cacheNames = &quot;users&quot;, key = &quot;#id&quot;)&#10;    public void evictUser(String id) {&#10;        // no-op; cache eviction handled by annotation&#10;    }&#10;}&#10;&#10;" />
+              <option name="updatedContent" value="package org.example.service;&#10;&#10;import org.example.model.UserDto;&#10;import org.slf4j.Logger;&#10;import org.slf4j.LoggerFactory;&#10;import org.springframework.cache.annotation.CacheEvict;&#10;import org.springframework.cache.annotation.Cacheable;&#10;import org.springframework.stereotype.Service;&#10;&#10;@Service&#10;public class UserService {&#10;&#10;    private static final Logger log = LoggerFactory.getLogger(UserService.class);&#10;&#10;    @Cacheable(cacheNames = &quot;users&quot;, key = &quot;#id&quot;)&#10;    public UserDto getUserById(String id) {&#10;        // Log entry to indicate method execution (only happens on cache miss)&#10;        log.info(&quot;getUserById - cache miss, fetching for id={}&quot;, id);&#10;        // Simulate slow call / DB fetch&#10;        try {&#10;            Thread.sleep(500);&#10;        } catch (InterruptedException e) {&#10;            Thread.currentThread().interrupt();&#10;        }&#10;        UserDto dto = new UserDto(id, &quot;User-&quot; + id);&#10;        log.debug(&quot;getUserById - fetched {}&quot;, dto);&#10;        return dto;&#10;    }&#10;&#10;    @CacheEvict(cacheNames = &quot;users&quot;, key = &quot;#id&quot;)&#10;    public void evictUser(String id) {&#10;        log.info(&quot;evictUser - evicting cache for id={}&quot;, id);&#10;        // no-op; cache eviction handled by annotation&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
