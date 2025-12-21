@@ -1,0 +1,64 @@
+# Ignore Maven target directory
+/target/
+
+# Ignore generated sources in src (we generate into target/generated-sources)
+/src/generated/
+
+# Ignore IntelliJ IDEA project files
+/.idea/
+*.idea/*
+*.iml
+
+# VS Code
+.vscode/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# NetBeans
+nbproject/private/
+
+# Build files
+/build/
+/out/
+
+# Generated sources (if generated into src, keep if you want to track them)
+# target/generated-sources/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.tmp
+tmp/
+
+# Java
+*.class
+
+# Environment
+.env
+
+# Maven wrapper logs
+.mvn/wrapper/maven-wrapper.jar
+
+# IDEA misc
+.idea_modules/
+
+# Ignore credentials and local settings
+secrets.properties
+local.properties
+
+# Windows
+ehthumbs.db
+
+# Keep track of other common ignores
+*.swp
+*.swo
+
+# If you want to ignore generated WSDL/XSD artifacts under target
+/target/classes/wsdl/
+/target/classes/xsd/
