@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  ignite1:
+    image: apacheignite/ignite:2.16.0
+    container_name: ignite1
+    environment:
+      IGNITE_NODE_NAME: ignite1
+    ports:
+      - "10800:10800"
+      - "47100-47109:47100-47109"
+      - "47500-47509:47500-47509"
+    volumes:
+      - ignite1-data:/ignite/work
+
+  ignite2:
+    image: apacheignite/ignite:2.16.0
+    container_name: ignite2
+    environment:
+      IGNITE_NODE_NAME: ignite2
+    volumes:
+      - ignite2-data:/ignite/work
+
+  ignite3:
+    image: apacheignite/ignite:2.16.0
+    container_name: ignite3
+    environment:
+      IGNITE_NODE_NAME: ignite3
+    volumes:
+      - ignite3-data:/ignite/work
+
+volumes:
+  ignite1-data:
+  ignite2-data:
+  ignite3-data:
